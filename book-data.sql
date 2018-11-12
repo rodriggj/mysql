@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE DATABASE IF NOT EXISTS `bk-store`;
 USE `bk-store`;
 
@@ -15,6 +16,21 @@ CREATE TABLE IF NOT EXISTS `books`
 	);
 
 INSERT INTO `books` (`title`, `author_fname`, `author_lname`, `released_year`, `stock_quantity`, `pages`)
+=======
+CREATE TABLE books 
+	(
+		book_id INT NOT NULL AUTO_INCREMENT,
+		title VARCHAR(100),
+		author_fname VARCHAR(100),
+		author_lname VARCHAR(100),
+		released_year INT,
+		stock_quantity INT,
+		pages INT,
+		PRIMARY KEY(book_id)
+	);
+
+INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+>>>>>>> 1328bb36a1a1f1a1fb0a246a993a5f9a5ade5081
 VALUES
 ('The Namesake', 'Jhumpa', 'Lahiri', 2003, 32, 291),
 ('Norse Mythology', 'Neil', 'Gaiman',2016, 43, 304),
@@ -32,6 +48,7 @@ VALUES
 ('Cannery Row', 'John', 'Steinbeck', 1945, 95, 181),
 ('Oblivion: Stories', 'David', 'Foster Wallace', 2004, 172, 329),
 ('Consider the Lobster', 'David', 'Foster Wallace', 2005, 92, 343);
+<<<<<<< HEAD
 
 SELECT * FROM books;
 
@@ -42,3 +59,5 @@ INSERT INTO books
            ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
 
 SELECT * FROM books;
+=======
+>>>>>>> 1328bb36a1a1f1a1fb0a246a993a5f9a5ade5081
