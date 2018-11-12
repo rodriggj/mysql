@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE DATABASE IF NOT EXISTS `bk-store`;
 USE `bk-store`;
 
@@ -17,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `books`
 
 INSERT INTO `books` (`title`, `author_fname`, `author_lname`, `released_year`, `stock_quantity`, `pages`)
 =======
-CREATE TABLE books 
+CREATE TABLE books
 	(
 		book_id INT NOT NULL AUTO_INCREMENT,
 		title VARCHAR(100),
@@ -59,5 +58,3 @@ INSERT INTO books
            ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
 
 SELECT * FROM books;
-=======
->>>>>>> 1328bb36a1a1f1a1fb0a246a993a5f9a5ade5081

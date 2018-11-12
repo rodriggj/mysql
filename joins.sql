@@ -1,7 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `joins`;
 USE `joins`;
-DROP TABLE `orders`;
-DROP TABLE `customers`;
+DROP TABLE `orders`, `customers`;
 
 CREATE TABLE customers(
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -35,5 +34,23 @@ VALUES ('Boy', 'George', 'george@gmail.com'),
         ('2015/01/03', 12.50, 2),
         ('1999/04/11', 450.25, 5);
 
-SELECT * FROM customers;
-SELECT * FROM orders;
+/*SELECT * FROM customers;
+SELECT * FROM orders;*/
+
+/*SELECT first_name, last_name, order_id, amount  FROM customers, orders
+WHERE customers.id = orders.customer_id;*/
+
+/*SELECT * FROM customers
+  JOIN orders
+    ON customers.id = orders.customer_id;*/
+
+/*SELECT first_name, last_name, amount FROM customers
+  JOIN orders
+    ON customers.id = orders.customer_id;*/
+
+SELECT first_name, last_name, order_date, sum(amount) AS total
+FROM customers
+JOIN orders
+  ON customers.id=orders.customer_id
+GROUP BY orders.order_id
+ORDER BY amount ASC;
