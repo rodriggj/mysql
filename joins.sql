@@ -34,6 +34,7 @@ VALUES ('Boy', 'George', 'george@gmail.com'),
         ('2015/01/03', 12.50, 2),
         ('1999/04/11', 450.25, 5);
 
+/*INNER JOIN*/
 /*SELECT * FROM customers;
 SELECT * FROM orders;*/
 
@@ -48,9 +49,28 @@ WHERE customers.id = orders.customer_id;*/
   JOIN orders
     ON customers.id = orders.customer_id;*/
 
-SELECT first_name, last_name, order_date, sum(amount) AS total
+/*SELECT first_name, last_name, order_date, sum(amount) AS total
 FROM customers
 JOIN orders
   ON customers.id=orders.customer_id
 GROUP BY orders.order_id
-ORDER BY amount ASC;
+ORDER BY amount ASC;*/
+
+#LEFT JOIN
+/*SELECT * FROM customers
+  LEFT JOIN orders
+    ON customers.id = orders.customer_id;*/
+
+/*SELECT first_name, last_name, order_date, sum(amount) AS total
+FROM customers
+LEFT JOIN orders
+  ON customers.id = orders.customer_id
+GROUP BY orders.order_date, customers.first_name, customers.last_name
+ORDER BY orders.order_date, total ASC;*/
+
+SELECT first_name, last_name, order_date, IFNULL(SUM(amount),0) AS total
+FROM customers
+LEFT JOIN orders
+  ON customers.id = orders.customer_id
+GROUP BY orders.order_date, customers.first_name, customers.last_name
+ORDER BY orders.order_date, total;
