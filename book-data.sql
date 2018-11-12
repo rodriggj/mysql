@@ -1,16 +1,20 @@
-CREATE TABLE books 
+CREATE DATABASE IF NOT EXISTS `bk-store`;
+USE `bk-store`;
+
+DROP TABLE `books`;
+CREATE TABLE IF NOT EXISTS `books`
 	(
-		book_id INT NOT NULL AUTO_INCREMENT,
-		title VARCHAR(100),
-		author_fname VARCHAR(100),
-		author_lname VARCHAR(100),
-		released_year INT,
-		stock_quantity INT,
-		pages INT,
+		`book_id` INT NOT NULL AUTO_INCREMENT,
+		`title` VARCHAR(100),
+		`author_fname` VARCHAR(100),
+		`author_lname` VARCHAR(100),
+		`released_year` INT,
+		`stock_quantity` INT,
+		`pages` INT,
 		PRIMARY KEY(book_id)
 	);
 
-INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+INSERT INTO `books` (`title`, `author_fname`, `author_lname`, `released_year`, `stock_quantity`, `pages`)
 VALUES
 ('The Namesake', 'Jhumpa', 'Lahiri', 2003, 32, 291),
 ('Norse Mythology', 'Neil', 'Gaiman',2016, 43, 304),
@@ -28,3 +32,13 @@ VALUES
 ('Cannery Row', 'John', 'Steinbeck', 1945, 95, 181),
 ('Oblivion: Stories', 'David', 'Foster Wallace', 2004, 172, 329),
 ('Consider the Lobster', 'David', 'Foster Wallace', 2005, 92, 343);
+
+SELECT * FROM books;
+
+INSERT INTO books
+    (title, author_fname, author_lname, released_year, stock_quantity, pages)
+    VALUES ('10% Happier', 'Dan', 'Harris', 2014, 29, 256),
+           ('fake_book', 'Freida', 'Harris', 2001, 287, 428),
+           ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
+
+SELECT * FROM books;
