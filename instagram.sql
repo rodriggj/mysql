@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS  `likes` (
   photo_id INT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW(),
   FOREIGN KEY (photo_id) REFERENCES photos(id),
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  PRIMARY KEY (user_id, photo_id)
 );
 
 SHOW TABLES;
@@ -59,7 +60,7 @@ VALUES
   ('Yo this is wiggity wack', 1, 3),
   ('Dirty pic yo', 2, 2),
   ('Busted', 3, 5),
-  ('Cool',1,3),
+  ('Cool',1, 2),
   ('Foobar', 1, 4);
 
 INSERT INTO likes (user_id, photo_id)
@@ -67,8 +68,8 @@ VALUES
   (1,3),
   (2,2),
   (3,5),
-  (1,3),
-  (1,4);
+  (3,2),
+  (2,1);
 
 SELECT
   users.id,
