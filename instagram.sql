@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `instagram-clone`;
 USE `instagram-clone`;
-DROP TABLES users, photos, comments, likes;
+DROP TABLES users, photos, comments, likes, follows;
 
 CREATE TABLE IF NOT EXISTS `users` (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -35,11 +35,21 @@ CREATE TABLE IF NOT EXISTS  `likes` (
   PRIMARY KEY (user_id, photo_id)
 );
 
+CREATE TABLE IF NOT EXISTS `follows` (
+  follower_id INT NOT NULL,
+  followee_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  FOREIGN KEY (follower_id) REFERENCES users(id),
+  FOREIGN KEY (followee_id) REFERENCES users(id),
+  PRIMARY KEY (follower_id, followee_id)
+);
+
 SHOW TABLES;
 DESC users;
 DESC photos;
 DESC comments;
 DESC likes;
+DESC follows;
 
 INSERT INTO users (username)
 VALUES
@@ -71,12 +81,19 @@ VALUES
   (3,2),
   (2,1);
 
+INSERT INTO follows (follower_id, followee_id)
+VALUES
+  (2,1),
+  (3,2),
+  (1,3);
+
 SELECT
   users.id,
   comments.comment_text,
   users.id AS user_id,
   photos.id AS photo_id,
-  photos.created_at
+  photos.created_at,
+  follows.followee_id
 FROM users
 INNER JOIN photos
   ON users.id = photos.user_id
@@ -84,5 +101,7 @@ INNER JOIN comments
   ON photos.id = comments.photo_id
 INNER JOIN likes
   ON likes.user_id = comments.user_id
-GROUP BY users.id, comments.comment_text, photos.id
+INNER JOIN follows
+  ON users.id = follows.follower_id
+GROUP BY users.id, comments.comment_text, photos.id, follows.followee_id
 ORDER BY users.id ASC;
