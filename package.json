@@ -1,7 +1,7 @@
 {
-  "name": "mysql-webapp",
+  "name": "webapp",
   "version": "1.0.0",
-  "description": "web app with node and mysql",
+  "description": "This is my readme file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/rodriggj/mysql#readme",
   "dependencies": {
-    "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
     "mysql": "^2.16.0"
   }
 }
