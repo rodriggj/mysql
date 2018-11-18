@@ -72,12 +72,4 @@ app.get('/', function(req, res) {
 
 app.listen(PORT, IP, function(){
 	console.log('Server is up and running'); 
-})
-
-function generateAddress(){
-  console.log(faker.address.streetAddress());
-  console.log(faker.address.city());
-  console.log(faker.address.state());
-}
-
-generateAddress(); 
+});
